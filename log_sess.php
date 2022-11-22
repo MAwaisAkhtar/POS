@@ -1,6 +1,6 @@
 <?php
 if (!isset($_SESSION['a']) && !isset($_SESSION['b']) && !isset($_SESSION['c'])) {
-    header('location:login.php');
+    header('location:index.php');
 }
 
 
