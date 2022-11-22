@@ -6,9 +6,6 @@ require("log_sess.php");
 $select="SELECT * FROM `BRAND`";
 $srun=mysqli_query($con,$select);
 ?>
-
-
-
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -256,6 +253,6 @@ $(document).ready(function() {
 </script>
 
 
-            </body>
+</body>
 
 </html>

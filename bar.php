@@ -21,18 +21,10 @@ foreach($sel as $data)
     $price[]=$data['QUANTITY'];
 }
 
-
-
-
 ?>
 <div style="width:500px;">
   <canvas id="myChart"></canvas>
 </div>
- 
-
-
-
-
 <script>
     const labels = <?php echo json_encode($month)?>;
 const data = {
