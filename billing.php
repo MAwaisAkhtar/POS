@@ -147,11 +147,9 @@ if (isset($_POST['unhold'])) {
                             <ol class="breadcrumb ms-auto">
                                 <li><a href="#" class="fw-normal"></a></li>
                             </ol>
-                           
                         </div>
                     </div>
                 </div>
-                
             </div>
             <!-- <div class="container-fluid"> -->
                 <div class="row">
@@ -163,13 +161,15 @@ if (isset($_POST['unhold'])) {
                 <th>Customer Name</th>
                 <th>Cell Number</th>
                 <th>Salesman</th>
+                <th>Amount Recieved</th>
             </tr>
             
             <tr>
             <form action="cus_data_ins.php" method="post">
             <td><input type="text" name="cus_name" ></td>
             <td><input type="text" name="cell_no" ></td>
-            <td><input type="text" name="saleman" > <input type="submit" value="Enter" name="cus_btn" class="btn btn-success text-white"></td>
+            <td><input type="text" name="saleman" ></td>
+            <td><input type="text" name="amo_rec" > <input type="submit" value="Enter" name="cus_btn" class="btn btn-success text-white"></td>
             </form>
             </tr>
                                       
@@ -211,7 +211,7 @@ if (isset($_POST['unhold'])) {
                         <h2 class="bg-danger text-white"><i class="fas fa-shopping-cart" aria-hidden="true"></i>  Bill Management</h2>
                         <form action="print.php" method="post">
                         <label for="">AMOUNT RECIEVED</label><br>
-                        <input type="text" name="amo_rec" >
+                        <input type="text" name="amo_rec">
                         <input type="submit" name="amo_btn" value="Print" class="btn btn-warning">
                         </form>
                     </div>
@@ -340,7 +340,6 @@ if (isset($_POST['unhold'])) {
                                 echo "<td><input type='submit' name='' value='EMPTY CART' class='btn btn-danger text-white'></td>";
                                 ?>
                                 </form>
-
                                 <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     Hold Cart
                                 </button></td>
@@ -349,17 +348,13 @@ if (isset($_POST['unhold'])) {
                                 </form>
                                 <?php
                                 echo "</tr>";
-
                                     ?>
-                                       
                                     </tbody>
                                     </table>
-                                
                             </div>
                             </div>
                             </div>
                             </div>
- 
                             </div>
                         </div>
                     </div>
@@ -368,7 +363,6 @@ if (isset($_POST['unhold'])) {
 </div>
 </div>
 </div>
-
 <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>

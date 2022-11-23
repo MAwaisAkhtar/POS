@@ -20,8 +20,6 @@ $select="SELECT * FROM `products`";
 </head>
 <body>
     <div class="container">
-        
-        
         <table  class="table">
             <thead>
                 <tr>
@@ -46,6 +44,8 @@ $select="SELECT * FROM `products`";
                         $_SESSION['cell']=$cell;
                         $s_man=$_POST['saleman'];
                         $_SESSION['s_man']=$s_man;
+                        $s_man=$_POST['amo_rec'];
+                        $_SESSION['amo_recieved']=$s_man;
 
 
                         foreach ($_SESSION['cart'] as $key =>$value) {
@@ -81,7 +81,7 @@ $select="SELECT * FROM `products`";
                         $irun=mysqli_query($con,$insert);
 
                             }
-                        header('location:billing.php');
+                        header('location:print.php');
 
                     }
               
