@@ -2,13 +2,11 @@
 require('db.php');
 session_start();
 $select="SELECT * FROM `products`";
-
 // if (isset($_POST['amo_btn'])) {
 //   $amo_recieved=$_POST['amo_rec'];
 //   $_SESSION['amo_recieved']=$amo_recieved;
 // }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +21,6 @@ $select="SELECT * FROM `products`";
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
   </head>
   <body>
     <form action="sdestroybilling.php" method="post">
@@ -73,7 +70,6 @@ $select="SELECT * FROM `products`";
  foreach ($_SESSION['cart'] as $key =>$value) {
      $p=0;
      $q=0;
- 
              $i=$value['pro_id']; ?>
           <tr> <td class="no"><?php echo $i  ?></td>
              

@@ -321,13 +321,13 @@ if (isset($_SESSION['c'])) {
             <!-- PIE -->
 <div class="col-lg-6.5 col-md-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">EXPIRED ITEMS!</h3>
+                            <h3 class="box-title">TRENDING ITEMS!</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
                               
                                     <div >
 
                                    <?php 
-                                   include('pie.php'); 
+                                //    include('pie.php'); 
                                    ?>
                                     </div>
                                 

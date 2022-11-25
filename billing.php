@@ -208,12 +208,12 @@ if (isset($_POST['unhold'])) {
                         <input type="submit" name="pro_add" value="Add" class="btn btn-warning"><br><br>
                         </form>
 
-                        <h2 class="bg-danger text-white"><i class="fas fa-shopping-cart" aria-hidden="true"></i>  Bill Management</h2>
+                        <!-- <h2 class="bg-danger text-white"><i class="fas fa-shopping-cart" aria-hidden="true"></i>  Bill Management</h2>
                         <form action="print.php" method="post">
                         <label for="">AMOUNT RECIEVED</label><br>
                         <input type="text" name="amo_rec">
                         <input type="submit" name="amo_btn" value="Print" class="btn btn-warning">
-                        </form>
+                        </form> -->
                     </div>
                 </div>
             </div>

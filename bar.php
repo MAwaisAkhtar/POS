@@ -14,11 +14,18 @@
 require('db.php');
 $res="SELECT `PRODUCT_NAME`, `QUANTITY` FROM `billing_data` ";
 $sel=mysqli_query($con,$res);
+while ($row=mysqli_fetch_assoc($sel)) {
+  $p=$row['PRODUCT_NAME'];
+  echo $p;
+}
 
-foreach($sel as $data)
+
+
+$sel1=mysqli_query($con,$res);
+foreach($sel1 as $data)
 {
-    $month[]=$data['PRODUCT_NAME'];
-    $price[]=$data['QUANTITY'];
+    $name[]=$data['PRODUCT_NAME'];
+    $qty[]=$data['QUANTITY'];
 }
 
 ?>
@@ -26,12 +33,12 @@ foreach($sel as $data)
   <canvas id="myChart"></canvas>
 </div>
 <script>
-    const labels = <?php echo json_encode($month)?>;
+    const labels = <?php echo json_encode($name)?>;
 const data = {
   labels: labels,
   datasets: [{
     label: 'My First Dataset',
-    data:  <?php echo json_encode($price)?>,
+    data:  <?php echo json_encode($qty)?>,
     backgroundColor: [
       'rgba(255, 99, 132, 0.2)',
       'rgba(255, 159, 64, 0.2)',
