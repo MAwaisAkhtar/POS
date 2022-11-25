@@ -293,14 +293,11 @@ if (isset($_SESSION['c'])) {
                         <div class="white-box analytics-info">
                             <h3 class="box-title">EXPIRED ITEMS!</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
-                              
                                     <div >
-
                                    <?php 
                                 //    include('pie.php'); 
                                    ?>
                                     </div>
-                                
                             </ul>
                             <ul class="d-flex justify-content-end "><a href="products.php">See Items</a></ul>
                         </div>
