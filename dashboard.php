@@ -3,25 +3,31 @@ require("db.php");
 session_start();
 require("log_sess.php");
 
+
 $sel_sales="SELECT * FROM `billing_data`";
 $sales_run = mysqli_query($con,$sel_sales);
 $sales_row=mysqli_num_rows($sales_run);
+
 
 $sel_pro="SELECT * FROM `PRODUCTS`";
 $pro_run = mysqli_query($con,$sel_pro);
 $pro_row=mysqli_num_rows($pro_run);
 
+
 $sel_exp="SELECT * FROM `expenses`";
 $exp_run = mysqli_query($con,$sel_exp);
 $exp_row=mysqli_num_rows($exp_run);
+
 
 $sel_brand="SELECT * FROM `brand`";
 $brand_run = mysqli_query($con,$sel_brand);
 $brand_row=mysqli_num_rows($brand_run);
 
+
 $sel_data="SELECT * FROM `data`";
 $data_run = mysqli_query($con,$sel_data);
 $data_row=mysqli_num_rows($data_run);
+
 
 $sel_project="SELECT * FROM `project`";
 $project_run = mysqli_query($con,$sel_project);
@@ -170,6 +176,7 @@ if (isset($_SESSION['c'])) {
                 </div>
 
             
+                
 
                 <!-- 2nd row -->
                 <div class="row justify-content-center">
