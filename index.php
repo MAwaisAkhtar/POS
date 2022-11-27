@@ -116,20 +116,20 @@ while ($row2=mysqli_fetch_assoc($result2)) {
 							Login
 						</button> -->
 					</div>
-					<div class="text-center p-t-12">
+					<!-- <div class="text-center p-t-12">
 						<span class="txt1">
 							Forgot
 						</span>
 						<a class="txt2" href="#">
 							Username / Password?
 						</a>
-					</div>
-					<div class="text-center p-t-136">
+					</div> -->
+					<!-- <div class="text-center p-t-136">
 						<a class="txt2" href="#">
 							Create your Account
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
-					</div>
+					</div> -->
 				</form>
 			</div>
 		</div>
