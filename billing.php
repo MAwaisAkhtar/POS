@@ -218,12 +218,25 @@ if (isset($_POST['unhold'])) {
                 </div>
             </div>
         </div> 
-    </div>
+    
     <!-- end left cart -->
 
 
-
-
+            
+            <div class="card outer"  style="width: 32rem; margin-top:1rem; margin-left:600px; " >
+            <div class="card-body">
+            <table class="table">
+            <thead>
+            </thead>
+            <tbody>
+            <?php
+            require('productsshow.php');
+            ?>
+            </tbody>
+            </table>
+            </div>
+            </div>
+        </div>
 
 
 <div class="container-fluid">
