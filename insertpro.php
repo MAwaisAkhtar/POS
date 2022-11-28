@@ -3,9 +3,6 @@ require("db.php");
 session_start();
 require("log_sess.php");
 
-  
-
-
 
 
 $select="SELECT * FROM `category`";
@@ -21,7 +18,18 @@ if (isset($_POST["new_btn"])) {
     $qua=$_POST['QUANTITY'];
     $date=$_POST['DATE'];
     $des=$_POST['DESCRIPTION'];
-    $insert="INSERT INTO `products`(`PRODUCT_NAME`, `CATEGORY`, `BRAND`, `SALE_PRICE`, `PURCHASE_PRICE`, `QUANTITY`, `EXPIRE_DATE`, `DESCRIPTION`) VALUES ('$p','$c','$b','$s','$pur','$qua','$date','$des')";
+
+    $temp_loc=$_FILES['file']['tmp_name'];
+    $imname=$_FILES['file']['name'];
+    $img_ext=pathinfo($imname,PATHINFO_EXTENSION);
+    $img_des="images/".$imname;
+    move_uploaded_file($_FILES['file']['tmp_name'], 'images/' . $_FILES['file']['name']);
+    if(($img_ext!='jfif')&&($img_ext!='jpg')){
+        echo '<script>alert("Only JPG or JPEG extensions are allowed");</script>';
+        exit();
+    }
+
+    $insert="INSERT INTO `products`(`PRODUCT_NAME`, `CATEGORY`, `BRAND`, `SALE_PRICE`, `PURCHASE_PRICE`, `QUANTITY`, `EXPIRE_DATE`, `DESCRIPTION`, `LOCATION`) VALUES ('$p','$c','$b','$s','$pur','$qua','$date','$des','$img_des')";
     $irun=mysqli_query($con,$insert);
     header('location:products.php');
 }
@@ -123,7 +131,7 @@ if (isset($_SESSION['c'])) {
                     <div class="col-lg-8 col-xlg-9 col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="" method="post" class="form-horizontal form-material">
+                                <form action="" method="post" class="form-horizontal form-material" enctype="multipart/form-data">
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">PRODUCT NAME</label>
                                         <div class="col-md-12 border-bottom p-0">
@@ -194,6 +202,12 @@ if (isset($_SESSION['c'])) {
                                             <textarea rows="4" cols="10" class="form-control" name="DESCRIPTION" value="Enter Description">
                                             </textarea>
                                         </div>
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label class="col-md-12 p-0">Image</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="file" name="file" id="file"> </div>
                                     </div>
                                     
                                     <div class="form-group mb-4">
