@@ -46,6 +46,8 @@ $select="SELECT * FROM `products`";
                         $_SESSION['s_man']=$s_man;
                         $s_man=$_POST['amo_rec'];
                         $_SESSION['amo_recieved']=$s_man;
+                        // include("trendingitems.php");
+
 
 
                         foreach ($_SESSION['cart'] as $key =>$value) {

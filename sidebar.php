@@ -141,7 +141,7 @@ body {
                 
             </div>
         
-        <aside class="left-sidebar" style="background: blue">
+        <aside class="left-sidebar" style="background: black">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
