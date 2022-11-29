@@ -52,6 +52,32 @@ if (isset($_POST['unhold'])) {
 
 ?>
 
+<style>
+    #badgee{
+        transform: translate(0px, -115px);
+        background-color: red;
+    }
+    #div-1{
+        display:inline-block;
+    }
+    div.inner{
+        width:8rem;
+        height:200;
+        background-color:#c7ebdf;
+    }
+   
+    
+    .box {
+        width: 100%;
+        height: 100px;
+       
+      }
+      img {
+        width: 100%;
+        height: 120px;
+      }
+</style>
+
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -205,7 +231,7 @@ if (isset($_POST['unhold'])) {
                         <label >QUANTITY</label><br>
                         <input type="text" name="qty" >
 
-                        <input type="submit" name="pro_add" value="Add" class="btn btn-warning"><br><br>
+                        <input type="submit" name="pro_add" value="Add" class="btn btn-danger"><br><br>
                         </form>
 
                         <!-- <h2 class="bg-danger text-white"><i class="fas fa-shopping-cart" aria-hidden="true"></i>  Bill Management</h2>
@@ -223,7 +249,7 @@ if (isset($_POST['unhold'])) {
 
 
             
-            <div class="card outer"  style="width: 32rem; margin-top:1rem; margin-left:600px; " >
+            <div class="card outer"  style="width: 40rem; margin-top:-21rem; margin-left:400px;">
             <div class="card-body">
             <table class="table">
             <thead>
@@ -236,7 +262,7 @@ if (isset($_POST['unhold'])) {
             </table>
             </div>
             </div>
-        </div>
+            </div>
 
 
 <div class="container-fluid">

@@ -24,10 +24,10 @@ if (isset($_POST["new_btn"])) {
     $img_ext=pathinfo($imname,PATHINFO_EXTENSION);
     $img_des="images/".$imname;
     move_uploaded_file($_FILES['file']['tmp_name'], 'images/' . $_FILES['file']['name']);
-    if(($img_ext!='jfif')&&($img_ext!='jpg')){
-        echo '<script>alert("Only JPG or JPEG extensions are allowed");</script>';
-        exit();
-    }
+    // if(($img_ext!='jfif')&&($img_ext!='jpg')){
+    //     echo '<script>alert("Only JPG or JPEG extensions are allowed");</script>';
+    //     exit();
+    // }
 
     $insert="INSERT INTO `products`(`PRODUCT_NAME`, `CATEGORY`, `BRAND`, `SALE_PRICE`, `PURCHASE_PRICE`, `QUANTITY`, `EXPIRE_DATE`, `DESCRIPTION`, `LOCATION`) VALUES ('$p','$c','$b','$s','$pur','$qua','$date','$des','$img_des')";
     $irun=mysqli_query($con,$insert);
