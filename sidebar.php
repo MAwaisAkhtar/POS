@@ -57,7 +57,7 @@ body {
   padding: 6px 8px 6px 16px;
   /* text-decoration: none; */
   font-size: 20px;
-  color: #818181;
+  color: white;
   display: block;
   border: none;
   background: none;
@@ -141,7 +141,7 @@ body {
                 
             </div>
         
-        <aside class="left-sidebar" data-sidebarbg="skin5">
+        <aside class="left-sidebar" style="background: blue">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
