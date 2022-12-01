@@ -22,7 +22,6 @@ while ($row=mysqli_fetch_assoc($sel)) {
       <td><?php echo $p ?></td>
       <td><?php echo $b ?></td>
       <?php
-
 $dataa['awa'][]=array(
   'p'=>$p,
   'b'=>$b,

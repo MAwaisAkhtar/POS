@@ -22,9 +22,6 @@ if (isset($_SESSION['c'])) {
 }else {
     unset($_SESSION['c']);
 }
-
-
-
 if (isset($_POST['pro_add'])) {
     $prod=$_POST["pro_name"];
 $_SESSION['cart'][]=array(
@@ -37,20 +34,14 @@ $_SESSION['cart'][]=array(
 //     header('location:manage_sales.php');
 // }
 }
-
 if (isset($_POST['unhold'])) {
     $k=$_POST['name_key'];
     // $_SESSION['name_k']=$k;
-
-
-
     $_SESSION['cart']=$_SESSION['new_cart'][$k];
     unset($_SESSION['new_cart'][$k]);
     unset($_SESSION['onhold'][$k]);
 }
-
 ?>
-
 <style>
     #badgee{
         transform: translate(0px, -115px);
@@ -64,20 +55,15 @@ if (isset($_POST['unhold'])) {
         height:200;
         background-color:#c7ebdf;
     }
-   
-    
     .box {
         width: 100%;
         height: 100px;
-       
       }
       img {
         width: 100%;
         height: 120px;
       }
 </style>
-
-
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -232,7 +218,6 @@ if (isset($_POST['unhold'])) {
 
                         <input type="submit" name="pro_add" value="Add" class="btn btn-danger"><br><br>
                         </form>
-
                         <!-- <h2 class="bg-danger text-white"><i class="fas fa-shopping-cart" aria-hidden="true"></i>  Bill Management</h2>
                         <form action="print.php" method="post">
                         <label for="">AMOUNT RECIEVED</label><br>
@@ -243,11 +228,7 @@ if (isset($_POST['unhold'])) {
                 </div>
             </div>
         </div> 
-    
     <!-- end left cart -->
-
-
-            
             <div class="card outer"  style="width: 40rem; margin-top:-21rem; margin-left:400px;">
             <div class="card-body">
             <table class="table">
@@ -262,22 +243,15 @@ if (isset($_POST['unhold'])) {
             </div>
             </div>
             </div>
-
-
 <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="bg-black">
-
                         <div class="child-container pl-3 pr-3" >
         <div class="row">
-            
                 <div class="card-sl ">
-                
                 <div class="card-heading1 ">
-                    
                            <div class="table-responsive">
-                            
                                 <table class="table text-nowrap">
                                     <thead>
                                         <tr>  
@@ -291,36 +265,49 @@ if (isset($_POST['unhold'])) {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                   
                                     <?php
-                                    
-                                 
                                     $bill="";
-
                                     $price=0;
                                     $tb=0;
-
-
+                                    $q=0;
                                     if (isset($_SESSION['cart'])) {
-    
-
                                     foreach ($_SESSION['cart'] as $key =>$value) {
-                                        $p=0;
-                                        $q=0;
+
+
+                                        // $p=0;
+                                        // $q=0;
+                                        $p=$value['pro_name'];
+                                        $q=$value['qty'];
+                                        // $max_qty=1;
+
+                                        // $res_max=mysqli_query($con,$select);
+                                        // while($row=mysqli_fetch_assoc($res_max))
+                                        // {   
+                                        //     // $max_qty=$row['QUANTITY'];
+                                        //     if($p==$row['PRODUCT_NAME']){
+                                        //     $max_qty=$row['QUANTITY'];
+                                        //     }
+                                        // }
+                                        // if ($q>$max_qty) {
+                                        //     // header('Location: '.$_SERVER['REQUEST_URI']);
+                                        //     // echo '<script>alert("Not Enough Quantity Available")</script>';
+                                        //     // echo '<script>window.location.reload;</script>';
+                                        //     // session_destroy();
+                                        //     unset($_SESSION['cart']);
+                                        //     // exit();
+                                        //     // $max_qty=0;
+                                        //     $q=0;
+                                        //     // header('location:billing.php');  
+                                        // }
                                         echo "<tr>";
-                                       
                                         echo "<form action='editcart.php' method='POST'>";
-                                      
                                         echo "<input type='hidden' name='key' value='".$key."'>";
                                            
                                                 echo "<td>".$value['pro_id']."</td>";
                                                 $i=$value['pro_id'];
                                                 $_SESSION['i']=$i;
                                                 echo "<input type='hidden' name='pro_id' value='".$value['pro_id']."'>";
-                                                
-                                            
                                                 echo "<td>".$value['pro_name']."</td>";
-                                                $p=$value['pro_name'];
                                                 // $_SESSION['p']=$p;
                                                 echo "<input type='hidden' name='pro_name' value='".$value['pro_name']."'>";
 
@@ -335,10 +322,9 @@ if (isset($_POST['unhold'])) {
                                                     $pur_price=$row['PURCHASE_PRICE'];
                                                     // $_SESSION['pur']=$pur_price;
                                                     }    
-                                                } 
-                                           
+                                                }
                                                 echo "<td><input type='text' name='qty' value='".$value['qty']."'></td>";
-                                                $q=$value['qty'];
+                                                
                                                 // $_SESSION['qty']=$q;
 
                                         $bill=$price * $q;
@@ -346,33 +332,24 @@ if (isset($_POST['unhold'])) {
                                         echo "<td>".($bill)."</td>";
                                         $tb=$bill+$tb;
                                         // $_SESSION['tb']=$tb;
-
                                         $result3=mysqli_query($con,$select);
                                         while($row=mysqli_fetch_assoc($result3))
                                         {
-                                            
                                             if($p==$row['PRODUCT_NAME']){
                                             echo "<td>".$row['QUANTITY']."</td>";
                                             $_SESSION['QUANTITY']=$row['QUANTITY'];
+                                            
                                             }
                                         }
-
                                         echo "<td><input type='submit' value='Delete' name='event' class='btn btn-danger text-white'><input type='submit' value='Update' name='event' class='btn btn-warning'></td>";
                                         echo "</form>";
-                                        echo "</tr>";
-
-                                        
+                                        echo "</tr>";  
+                                    }                                     
                                     } 
-                                } 
-                                    
                                 echo "<tr>";
                                 echo "<th><label>Total Bill</label></th>";
                                 echo "<td><input type='text' name='' value='$tb'></td>";
-                           
-                            
                                 ?>
-
-
                                 <form action="sdestroybilling.php" method="post">
                                 <?php
                                 echo "<td><input type='submit' name='' value='EMPTY CART' class='btn btn-danger text-white'></td>";
@@ -386,9 +363,9 @@ if (isset($_POST['unhold'])) {
                                 </form>
                                 <?php
                                 echo "</tr>";
-                                    ?>
-                                    </tbody>
-                                    </table>
+                            ?>
+                            </tbody>
+                            </table>
                             </div>
                             </div>
                             </div>
@@ -398,8 +375,8 @@ if (isset($_POST['unhold'])) {
                     </div>
                 </div>
             </div>
-</div>
-</div>
+        </div>
+    </div>
 </div>
 <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
@@ -418,5 +395,5 @@ if (isset($_POST['unhold'])) {
     <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="js/pages/dashboards/dashboard1.js"></script>
 
-            </body>
+    </body>
 </html>

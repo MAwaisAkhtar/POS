@@ -192,14 +192,8 @@ while($row=mysqli_fetch_assoc($srun1)){
                                         </tr>
                                     </thead>
                                     <tbody id="data">
-                                  
-                            
-                            </tbody>
-                            
+                                    </tbody>
                                 </table>
-
-                                
-
                                 <?php 
                                 $ad=0;
                                 $srun=mysqli_query($con,$select);

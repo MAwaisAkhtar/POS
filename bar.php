@@ -1,3 +1,43 @@
+<?php
+require('db.php');
+
+$select="SELECT `PRODUCT_NAME`,`QUANTITY` FROM `billing_data`";
+$srun=mysqli_query($con,$select);
+while($row=mysqli_fetch_assoc($srun)){
+
+    // $data[]=$row['product'];
+    $data1[]=$row;
+  
+}
+// print_r(array_unique($data));
+?>
+<br><br>
+<?php
+foreach($data1 as $key =>$value)
+{
+    $p=$value['PRODUCT_NAME'];
+    $b=0;
+    foreach($data1 as $key =>$value){
+
+        $a_p=$value['PRODUCT_NAME'];
+        if($p==$a_p)
+        {
+          $a_q=$value['QUANTITY'];
+          $b=$a_q+$b;
+        }
+    }
+    ?>
+ 
+    <?php
+    $data2[$p]=$b;
+    // $data2[]=$b;
+
+
+}
+$result=array_unique($data2);
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,34 +51,28 @@
 <body>
 
 <?php
-require('db.php');
-$res="SELECT `PRODUCT_NAME`, `QUANTITY` FROM `billing_data` ";
-$sel=mysqli_query($con,$res);
-while ($row=mysqli_fetch_assoc($sel)) {
-  $p=$row['PRODUCT_NAME'];
-  echo $p;
-}
 
 
-
-$sel1=mysqli_query($con,$res);
-foreach($sel1 as $data)
+foreach($result as $key=>$value)
 {
-    $name[]=$data['PRODUCT_NAME'];
-    $qty[]=$data['QUANTITY'];
+    $month[]=$key;
+    $qty[]=$value;
+    
 }
+
 
 ?>
 <div style="width:500px;">
-  <canvas id="myChart"></canvas>
+  <canvas   id="myChart"></canvas>
 </div>
+
 <script>
-    const labels = <?php echo json_encode($name)?>;
+    const labels = <?php echo json_encode($month) ?>;
 const data = {
   labels: labels,
   datasets: [{
-    label: 'My First Dataset',
-    data:  <?php echo json_encode($qty)?>,
+    label: 'Trending Items',
+    data:  <?php echo json_encode($qty) ?>,
     backgroundColor: [
       'rgba(255, 99, 132, 0.2)',
       'rgba(255, 159, 64, 0.2)',
