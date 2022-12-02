@@ -235,8 +235,12 @@ if (isset($_POST['unhold'])) {
             <thead>
             </thead>
             <tbody>
+            <td id="div-1">
+      
+            </td>
+
             <?php
-            require('productsshow.php');
+            // require('productsshow.php');
             ?>
             </tbody>
             </table>
@@ -272,14 +276,11 @@ if (isset($_POST['unhold'])) {
                                     $q=0;
                                     if (isset($_SESSION['cart'])) {
                                     foreach ($_SESSION['cart'] as $key =>$value) {
-
-
                                         // $p=0;
                                         // $q=0;
                                         $p=$value['pro_name'];
                                         $q=$value['qty'];
                                         // $max_qty=1;
-
                                         // $res_max=mysqli_query($con,$select);
                                         // while($row=mysqli_fetch_assoc($res_max))
                                         // {   
@@ -302,7 +303,6 @@ if (isset($_POST['unhold'])) {
                                         echo "<tr>";
                                         echo "<form action='editcart.php' method='POST'>";
                                         echo "<input type='hidden' name='key' value='".$key."'>";
-                                           
                                                 echo "<td>".$value['pro_id']."</td>";
                                                 $i=$value['pro_id'];
                                                 $_SESSION['i']=$i;
@@ -313,8 +313,7 @@ if (isset($_POST['unhold'])) {
 
                                                 $result2=mysqli_query($con,$select);
                                                 while($row=mysqli_fetch_assoc($result2))
-                                                {
-                                                    
+                                                { 
                                                     if($p==$row['PRODUCT_NAME']){
                                                     echo "<td>".$row['SALE_PRICE']."</td>";
                                                     $price=$row['SALE_PRICE'];
@@ -324,9 +323,7 @@ if (isset($_POST['unhold'])) {
                                                     }    
                                                 }
                                                 echo "<td><input type='text' name='qty' value='".$value['qty']."'></td>";
-                                                
                                                 // $_SESSION['qty']=$q;
-
                                         $bill=$price * $q;
                                         // $_SESSION['bill']=$bill;
                                         echo "<td>".($bill)."</td>";
@@ -378,6 +375,26 @@ if (isset($_POST['unhold'])) {
         </div>
     </div>
 </div>
+<script type="text/javascript" src="js/jquery.js"></script>
+            <script type="text/javascript">
+            $(document).ready(function(){
+                    // show
+                    function loadTable(){
+                    $.ajax({
+                    url:'pro_show.php',
+                    type:'post',
+                    success:function(data)
+                    {
+                        $('#div-1').html(data);
+                    }
+               });
+              }
+              loadTable(); 
+
+
+              
+            });
+            </script>
 <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>

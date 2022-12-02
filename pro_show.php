@@ -1,4 +1,3 @@
-
 <?php
 require('db.php');
 $select="SELECT * FROM `products`";
@@ -13,11 +12,7 @@ $exe=mysqli_query($con,$select);
     <title>Document</title>
 </head>
 <body>
-    
-<tbody>
-    <tr>
 <?php while($array=mysqli_fetch_assoc($exe)){?>
-
 <div  class="card inner">
       <div class="box">
       <img class="card-img-top" src="<?php echo $array['LOCATION'] ?>" alt="Card image cap">
@@ -28,11 +23,8 @@ $exe=mysqli_query($con,$select);
          <p class="card-text"> <?php echo $array['SALE_PRICE']; ?></p>
       </div>
       </div>
-     
       <?php
 }
 ?>
-</tr>
- </tbody>
 </body>
 </html>

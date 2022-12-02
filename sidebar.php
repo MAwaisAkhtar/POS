@@ -216,25 +216,14 @@ body {
                                 <span class="hide-menu">ITEMS LIST</span>
                                 </a>
                                 </li>
+                            </div>
 
-                                <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="insertcat.php"
-                                aria-expanded="false">
-                                <i class="mdi mdi-arrange-bring-forward"></i>
-                                <span class="hide-menu">NEW CATEGORY</span>
-                                </a>
-                                </li>
-                                
-                                <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="categories.php"
-                                aria-expanded="false">
-                                <i class="mdi mdi-arrange-bring-forward"></i>
-                                <span class="hide-menu">CATEGORY LIST</span>
-                                </a>
-                                </li>
-                                
-
-                                <li class="sidebar-item">
+                            <!-- BRANDS -->
+                            <button class="dropdown-btn">BRANDS
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="dropdown-container">
+                            <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="insertbr.php"
                                 aria-expanded="false">
                                 <i class="mdi mdi-arrange-bring-forward"></i>
@@ -253,6 +242,30 @@ body {
                             </div>
 
 
+                            <!-- CATEGORIES -->
+
+                            <button class="dropdown-btn">CATEGORIES
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="dropdown-container">
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="insertcat.php"
+                                aria-expanded="false">
+                                <i class="mdi mdi-arrange-bring-forward"></i>
+                                <span class="hide-menu">NEW CATEGORY</span>
+                                </a>
+                                </li>
+                                
+                                <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="categories.php"
+                                aria-expanded="false">
+                                <i class="mdi mdi-arrange-bring-forward"></i>
+                                <span class="hide-menu">CATEGORY LIST</span>
+                                </a>
+                                </li>
+                            </div>
+
+
 
 
                         <li class="sidebar-item">
@@ -264,28 +277,13 @@ body {
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="table-basic.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="customers.php"
                                 aria-expanded="false">
                                 <i class="mdi mdi-border-none"></i>
-                                <span class="hide-menu">Table</span>
+                                <span class="hide-menu">Customers</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="icon-material.html"
-                                aria-expanded="false">
-                                <i class="mdi mdi-face"></i>
-                                <span class="hide-menu">Icon</span>
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="starter-kit.html"
-                                aria-expanded="false">
-                                <i class="mdi mdi-file"></i>
-                                <span class="hide-menu">Blank</span>
-                            </a>
-                        </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="manage_admins.php"
                                 aria-expanded="false">
