@@ -361,11 +361,7 @@ if (isset($_POST['unhold'])) {
                                         echo "</form>";
                                         echo "</tr>";  
 
-                                        $_SESSION['cart_ins'][]=array(
-                                            'id'=>$i,
-                                            'name'=>$p,
-                                            'quantity'=>$q
-                                         ); 
+                                       
                                     }  
                                     
                                                                   
@@ -387,6 +383,11 @@ if (isset($_POST['unhold'])) {
                                 </form>
                                 <?php
                                 echo "</tr>";
+                                $_SESSION['cart_ins'][]=array(
+                                    'id'=>$i,
+                                    'name'=>$p,
+                                    'quantity'=>$q
+                                 ); 
                             }
                             ?>
                             </tbody>
