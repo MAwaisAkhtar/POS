@@ -22,6 +22,18 @@
    
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<!-- bootstrap5 -->
+<link href="assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 <style>
 body {
   font-family: "Lato", sans-serif;
@@ -45,7 +57,7 @@ body {
   padding: 6px 8px 6px 16px;
   /* text-decoration: none; */
   font-size: 20px;
-  color: #818181;
+  color: white;
   display: block;
   border: none;
   background: none;
@@ -107,6 +119,7 @@ body {
     <div id="main-wrapper"  data-theme="dark" data-layout="vertical" data-sidebartype="full"
         data-boxed-layout="full">
 
+
         <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     
@@ -116,7 +129,7 @@ body {
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
                             <ol class="breadcrumb ms-auto">
-                                <li><a href="dashboard.php" class="fw-normal">Dashboard</a></li>
+                                <li><a href="billing.php" class="fw-normal">POS</a></li>
                             </ol>
                             <a href="logout.php" class="btn btn-danger  d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">
                                 LOGOUT 
@@ -128,7 +141,7 @@ body {
                 
             </div>
         
-        <aside class="left-sidebar" data-sidebarbg="skin5">
+        <aside class="left-sidebar" style="background: black">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
@@ -183,81 +196,26 @@ body {
                             </div>
 
 
-                            <button class="dropdown-btn">ITEMS
-                                <i class="fa fa-caret-down"></i>
-                            </button>
-                            <div class="dropdown-container">
-                                
-                                <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="insertpro.php"
-                                aria-expanded="false">
-                                <i class="mdi mdi-arrange-bring-forward"></i>
-                                <span class="hide-menu">NEW ITEM</span>
-                                </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="products.php"
-                                aria-expanded="false">
-                                <i class="mdi mdi-arrange-bring-forward"></i>
-                                <span class="hide-menu">ITEMS LIST</span>
-                                </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="insertcat.php"
-                                aria-expanded="false">
-                                <i class="mdi mdi-arrange-bring-forward"></i>
-                                <span class="hide-menu">NEW CATEGORY</span>
-                                </a>
-                                </li>
-                                
-                                <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="categories.php"
-                                aria-expanded="false">
-                                <i class="mdi mdi-arrange-bring-forward"></i>
-                                <span class="hide-menu">CATEGORY LIST</span>
-                                </a>
-                                </li>
-                                
-
-                                <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="insertbr.php"
-                                aria-expanded="false">
-                                <i class="mdi mdi-arrange-bring-forward"></i>
-                                <span class="hide-menu">NEW BRAND</span>
-                                </a>
-                                </li>
-                                
-
-                                <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="brands.php"
-                                aria-expanded="false">
-                                <i class="mdi mdi-arrange-bring-forward"></i>
-                                <span class="hide-menu">BRAND LIST</span>
-                                </a>
-                                </li>
-                            </div>
-
-
+                           
 
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="form-basic.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="manage_expense.php"
                                 aria-expanded="false">
                                 <i class="mdi mdi-arrange-bring-forward"></i>
-                                <span class="hide-menu">Form Basic</span>
+                                <span class="hide-menu">Expenses</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="table-basic.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="customers.php"
                                 aria-expanded="false">
                                 <i class="mdi mdi-border-none"></i>
-                                <span class="hide-menu">Table</span>
+                                <span class="hide-menu">Customers</span>
                             </a>
                         </li>
 
+                        
                     </ul>
                 </nav>
             </div>
@@ -297,10 +255,26 @@ for (i = 0; i < dropdown.length; i++) {
 </script>
 
 
+
+
+<script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app-style-switcher.js"></script>
+    <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.js"></script>
+    <!--This page JavaScript -->
+    <!--chartis chart-->
+    <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
+    <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="js/pages/dashboards/dashboard1.js"></script>
+
+
 </body>
 
 </html>
-
-
-
-

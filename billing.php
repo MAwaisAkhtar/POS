@@ -100,6 +100,17 @@ if (isset($_POST['unhold'])) {
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+        #toast-container > .customer-info {            
+            background-color: black;
+            
+           }
+    </style>
+
+    <!-- Toaster library cdn -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 </head>
 
@@ -235,12 +246,8 @@ if (isset($_POST['unhold'])) {
             <thead>
             </thead>
             <tbody>
-            <td id="div-1">
-      
-            </td>
-
             <?php
-            // require('productsshow.php');
+            require('productsshow.php');
             ?>
             </tbody>
             </table>
@@ -273,33 +280,36 @@ if (isset($_POST['unhold'])) {
                                     $bill="";
                                     $price=0;
                                     $tb=0;
-                                    $q=0;
+                                    // $q=0;
                                     if (isset($_SESSION['cart'])) {
                                     foreach ($_SESSION['cart'] as $key =>$value) {
                                         // $p=0;
                                         // $q=0;
                                         $p=$value['pro_name'];
                                         $q=$value['qty'];
-                                        // $max_qty=1;
-                                        // $res_max=mysqli_query($con,$select);
-                                        // while($row=mysqli_fetch_assoc($res_max))
-                                        // {   
-                                        //     // $max_qty=$row['QUANTITY'];
-                                        //     if($p==$row['PRODUCT_NAME']){
-                                        //     $max_qty=$row['QUANTITY'];
-                                        //     }
-                                        // }
-                                        // if ($q>$max_qty) {
+                                        $res_max=mysqli_query($con,$select);
+                                        while($row=mysqli_fetch_assoc($res_max))
+                                        {   
+                                            // $max_qty=$row['QUANTITY'];
+                                            if($p==$row['PRODUCT_NAME']){
+                                            $max_qty=$row['QUANTITY'];
+                                            }
+                                        }
+                                        if ($q>$max_qty) {
+                                            $_SESSION['max_qty']=1;
                                         //     // header('Location: '.$_SERVER['REQUEST_URI']);
-                                        //     // echo '<script>alert("Not Enough Quantity Available")</script>';
                                         //     // echo '<script>window.location.reload;</script>';
                                         //     // session_destroy();
-                                        //     unset($_SESSION['cart']);
-                                        //     // exit();
+                                        // $p=0;
+                                        // $max_qty=1;
+                                        $q=0;
+                                        // echo '<script>alert("Not Enough Quantity Available")</script>';
+                                        // unset($_SESSION['cart']);
+                                            // exit();
                                         //     // $max_qty=0;
                                         //     $q=0;
                                         //     // header('location:billing.php');  
-                                        // }
+                                        }else {
                                         echo "<tr>";
                                         echo "<form action='editcart.php' method='POST'>";
                                         echo "<input type='hidden' name='key' value='".$key."'>";
@@ -310,7 +320,6 @@ if (isset($_POST['unhold'])) {
                                                 echo "<td>".$value['pro_name']."</td>";
                                                 // $_SESSION['p']=$p;
                                                 echo "<input type='hidden' name='pro_name' value='".$value['pro_name']."'>";
-
                                                 $result2=mysqli_query($con,$select);
                                                 while($row=mysqli_fetch_assoc($result2))
                                                 { 
@@ -324,6 +333,7 @@ if (isset($_POST['unhold'])) {
                                                 }
                                                 echo "<td><input type='text' name='qty' value='".$value['qty']."'></td>";
                                                 // $_SESSION['qty']=$q;
+
                                         $bill=$price * $q;
                                         // $_SESSION['bill']=$bill;
                                         echo "<td>".($bill)."</td>";
@@ -341,6 +351,13 @@ if (isset($_POST['unhold'])) {
                                         echo "<td><input type='submit' value='Delete' name='event' class='btn btn-danger text-white'><input type='submit' value='Update' name='event' class='btn btn-warning'></td>";
                                         echo "</form>";
                                         echo "</tr>";  
+
+                                        $_SESSION['cart_ins'][]=array(
+                                            'id'=>$i,
+                                            'name'=>$p,
+                                            'quantity'=>$q
+                                         );
+
                                     }                                     
                                     } 
                                 echo "<tr>";
@@ -360,6 +377,7 @@ if (isset($_POST['unhold'])) {
                                 </form>
                                 <?php
                                 echo "</tr>";
+                            }
                             ?>
                             </tbody>
                             </table>
@@ -375,7 +393,17 @@ if (isset($_POST['unhold'])) {
         </div>
     </div>
 </div>
-<script type="text/javascript" src="js/jquery.js"></script>
+
+<?php if (isset($_SESSION['max_qty'])) {
+                                echo '<script>
+                                toastr.success("Not enough quantity available","QUANTITY ALERT",{"iconClass": "customer-info"});
+                                </script>';
+                            unset($_SESSION['max_qty']);
+
+                            } 
+                            ?>
+
+<!-- <script type="text/javascript" src="js/jquery.js"></script>
             <script type="text/javascript">
             $(document).ready(function(){
                     // show
@@ -389,12 +417,9 @@ if (isset($_POST['unhold'])) {
                     }
                });
               }
-              loadTable(); 
-
-
-              
+              loadTable();  
             });
-            </script>
+            </script> -->
 <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>

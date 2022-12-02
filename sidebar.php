@@ -124,23 +124,20 @@ body {
                 <div class="row align-items-center">
                     
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Dashboard</h4>
+                        <h4 class="page-title">Dashboard=</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
                             <ol class="breadcrumb ms-auto">
-                                <li><a href="dashboard.php" class="fw-normal">Dashboard</a></li>
+                                <li><a href="billing.php" class="fw-normal">POS</a></li>
                             </ol>
                             <a href="logout.php" class="btn btn-danger  d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">
                                 LOGOUT 
                             </a>
                         </div>
                     </div>
-
                 </div>
-                
             </div>
-        
         <aside class="left-sidebar" style="background: black">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
@@ -291,7 +288,6 @@ body {
                                 <span class="hide-menu">Manage Admins</span>
                             </a>
                         </li>
-
                     </ul>
                 </nav>
             </div>

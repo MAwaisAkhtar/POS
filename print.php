@@ -65,15 +65,15 @@ $select="SELECT * FROM `products`";
         </thead>
         <tbody>
         
-         <?php if (isset($_SESSION['cart'])) {
+         <?php if (isset($_SESSION['cart_ins'])) {
      $tb=0;
- foreach ($_SESSION['cart'] as $key =>$value) {
+ foreach ($_SESSION['cart_ins'] as $key =>$value) {
      $p=0;
      $q=0;
-             $i=$value['pro_id']; ?>
+             $i=$value['id']; ?>
           <tr> <td class="no"><?php echo $i  ?></td>
              
-            <?php $p=$value['pro_name']; ?>
+            <?php $p=$value['name']; ?>
            <td class="desc"><h3><?php echo $p  ?></h3></td>
              <?php $result2=mysqli_query($con,$select);
              while($row=mysqli_fetch_assoc($result2))
@@ -84,7 +84,7 @@ $select="SELECT * FROM `products`";
                <?php  }    
              } 
         
-             $q=$value['qty']; ?>
+             $q=$value['quantity']; ?>
            <td class="qty"><?php echo $q  ?></td>
 
 

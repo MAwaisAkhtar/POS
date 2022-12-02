@@ -50,13 +50,11 @@ $select="SELECT * FROM `products`";
 
 
 
-                        foreach ($_SESSION['cart'] as $key =>$value) {
+                        foreach ($_SESSION['cart_ins'] as $key =>$value) {
                         
-                           
-                                
-                                $id=$value['pro_id'];
-                                $name=$value['pro_name'];
-                                $qty=$value['qty'];
+                                $id=$value['id'];
+                                $name=$value['name'];
+                                $qty=$value['quantity'];
 
                                 $result2=mysqli_query($con,$select);
                                 while($row=mysqli_fetch_assoc($result2))
