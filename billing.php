@@ -227,7 +227,6 @@ if (isset($_POST['unhold'])) {
                         
                         <label >QUANTITY</label><br>
                         <input type="text" name="qty" >
-
                         <input type="submit" name="pro_add" value="Add" class="btn btn-danger"><br><br>
                         </form>
                         <!-- <h2 class="bg-danger text-white"><i class="fas fa-shopping-cart" aria-hidden="true"></i>  Bill Management</h2>
@@ -282,7 +281,6 @@ if (isset($_POST['unhold'])) {
                                     $price=0;
                                     $tb=0;
                                     // $q=0;
-
                                     if (isset($_SESSION['toast_cart'])) {
                                     foreach ($_SESSION['toast_cart'] as $key =>$value) {
                                         $ti=$value['pro_id'];
@@ -311,21 +309,16 @@ if (isset($_POST['unhold'])) {
                                              );
                                             unset($_SESSION['toast_cart']);
                                         }
-                                        }
-                                      
+                                        } 
                                     }
-                                    
                                     }
                                 }
-
-
                                     if (isset($_SESSION['cart'])) {
                                     foreach ($_SESSION['cart'] as $key =>$value) {
                                         // $p=0;
                                         // $q=0;
                                         $p=$value['pro_name'];
                                         $q=$value['qty'];
-                                    
                                         echo "<tr>";
                                         echo "<form action='editcart.php' method='POST'>";
                                         echo "<input type='hidden' name='key' value='".$key."'>";
@@ -368,14 +361,13 @@ if (isset($_POST['unhold'])) {
                                         echo "</form>";
                                         echo "</tr>";  
 
-                                       
-
+                                        $_SESSION['cart_ins'][]=array(
+                                            'id'=>$i,
+                                            'name'=>$p,
+                                            'quantity'=>$q
+                                         ); 
                                     }  
-                                    $_SESSION['cart_ins'][]=array(
-                                        'id'=>$i,
-                                        'name'=>$p,
-                                        'quantity'=>$q
-                                     ); 
+                                    
                                                                   
                                     
                                 echo "<tr>";
