@@ -24,11 +24,12 @@ if (isset($_SESSION['c'])) {
 }
 if (isset($_POST['pro_add'])) {
     $prod=$_POST["pro_name"];
-$_SESSION['cart'][]=array(
+    $_SESSION['toast_cart'][]=array(
    'pro_id'=>$_POST["pro_id"],
    'pro_name'=>$prod,
    'qty'=>$_POST["qty"]
 );
+
 // if(in_array(1, $_SESSION['cart']))
 // {
 //     header('location:manage_sales.php');
@@ -281,35 +282,50 @@ if (isset($_POST['unhold'])) {
                                     $price=0;
                                     $tb=0;
                                     // $q=0;
+
+                                    if (isset($_SESSION['toast_cart'])) {
+                                    foreach ($_SESSION['toast_cart'] as $key =>$value) {
+                                        $ti=$value['pro_id'];
+                                    $tp=$value['pro_name'];
+                                    $tq=$value['qty'];
+
+                                    $res_max=mysqli_query($con,$select);
+                                    while($row=mysqli_fetch_assoc($res_max))
+                                    {   
+                                        // $max_qty=$row['QUANTITY'];
+                                        if($tp==$row['PRODUCT_NAME']){
+                                        $max_qty=$row['QUANTITY'];
+                                       
+                                        if ($tq>$max_qty) {
+                                            echo '<script>
+                                            toastr.success("Not enough quantity available","QUANTITY ALERT",{"iconClass": "customer-info"});
+                                            </script>';
+                                            
+                                            unset($_SESSION['toast_cart']);
+                                        }
+                                        elseif($tq<$max_qty){
+                                            $_SESSION['cart'][]=array(
+                                                'pro_id'=>$ti,
+                                                'pro_name'=>$tp,
+                                                'qty'=>$tq
+                                             );
+                                            unset($_SESSION['toast_cart']);
+                                        }
+                                        }
+                                      
+                                    }
+                                    
+                                    }
+                                }
+
+
                                     if (isset($_SESSION['cart'])) {
                                     foreach ($_SESSION['cart'] as $key =>$value) {
                                         // $p=0;
                                         // $q=0;
                                         $p=$value['pro_name'];
                                         $q=$value['qty'];
-                                        $res_max=mysqli_query($con,$select);
-                                        while($row=mysqli_fetch_assoc($res_max))
-                                        {   
-                                            // $max_qty=$row['QUANTITY'];
-                                            if($p==$row['PRODUCT_NAME']){
-                                            $max_qty=$row['QUANTITY'];
-                                            }
-                                        }
-                                        if ($q>$max_qty) {
-                                            $_SESSION['max_qty']=1;
-                                        //     // header('Location: '.$_SERVER['REQUEST_URI']);
-                                        //     // echo '<script>window.location.reload;</script>';
-                                        //     // session_destroy();
-                                        // $p=0;
-                                        // $max_qty=1;
-                                        $q=0;
-                                        // echo '<script>alert("Not Enough Quantity Available")</script>';
-                                        // unset($_SESSION['cart']);
-                                            // exit();
-                                        //     // $max_qty=0;
-                                        //     $q=0;
-                                        //     // header('location:billing.php');  
-                                        }else {
+                                    
                                         echo "<tr>";
                                         echo "<form action='editcart.php' method='POST'>";
                                         echo "<input type='hidden' name='key' value='".$key."'>";
@@ -352,14 +368,16 @@ if (isset($_POST['unhold'])) {
                                         echo "</form>";
                                         echo "</tr>";  
 
-                                        $_SESSION['cart_ins'][]=array(
-                                            'id'=>$i,
-                                            'name'=>$p,
-                                            'quantity'=>$q
-                                         );
+                                       
 
-                                    }                                     
-                                    } 
+                                    }  
+                                    $_SESSION['cart_ins'][]=array(
+                                        'id'=>$i,
+                                        'name'=>$p,
+                                        'quantity'=>$q
+                                     ); 
+                                                                  
+                                    
                                 echo "<tr>";
                                 echo "<th><label>Total Bill</label></th>";
                                 echo "<td><input type='text' name='' value='$tb'></td>";
@@ -394,14 +412,7 @@ if (isset($_POST['unhold'])) {
     </div>
 </div>
 
-<?php if (isset($_SESSION['max_qty'])) {
-                                echo '<script>
-                                toastr.success("Not enough quantity available","QUANTITY ALERT",{"iconClass": "customer-info"});
-                                </script>';
-                            unset($_SESSION['max_qty']);
 
-                            } 
-                            ?>
 
 <!-- <script type="text/javascript" src="js/jquery.js"></script>
             <script type="text/javascript">

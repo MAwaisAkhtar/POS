@@ -31,12 +31,6 @@ $select="SELECT * FROM `products`";
                 <?php
                 // $bill="";
                 
-                    
-                    
-                    
-                    
-                    
-
                     if (isset($_POST["cus_btn"])) {
                         $cus=$_POST['cus_name'];
                         $_SESSION['cus']=$cus;
@@ -47,8 +41,6 @@ $select="SELECT * FROM `products`";
                         $s_man=$_POST['amo_rec'];
                         $_SESSION['amo_recieved']=$s_man;
                         // include("trendingitems.php");
-
-
 
                         foreach ($_SESSION['cart_ins'] as $key =>$value) {
                         
