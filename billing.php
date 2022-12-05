@@ -375,6 +375,8 @@ if (isset($_POST['unhold'])) {
                                          );
                                         }  
                                     }
+
+                                    
                                 echo "<tr>";
                                 echo "<th><label>Total Bill</label></th>";
                                 echo "<td><input type='text' name='' value='$tb'></td>";
