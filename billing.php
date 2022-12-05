@@ -51,6 +51,7 @@ if (isset($_POST['unhold'])) {
     #div-1{
         display:inline-block;
     }
+    
     div.inner{
         width:8rem;
         height:200;
@@ -67,7 +68,6 @@ if (isset($_POST['unhold'])) {
 </style>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -240,15 +240,19 @@ if (isset($_POST['unhold'])) {
             </div>
         </div> 
     <!-- end left cart -->
-            <div class="card outer"  style="width: 40rem; margin-top:-21rem; margin-left:400px;">
+            <div class="card outer"  style="width: 43rem; margin-top:-21rem; margin-left:380px;">
             <div class="card-body">
             <table class="table">
             <thead>
             </thead>
             <tbody>
+                <tr>
+                <td id="div-1" >
             <?php
             require('productsshow.php');
             ?>
+            </td>
+            </tr>
             </tbody>
             </table>
             </div>
@@ -259,9 +263,9 @@ if (isset($_POST['unhold'])) {
                     <div class="col-sm-12">
                         <div class="bg-black">
                         <div class="child-container pl-3 pr-3" >
-        <div class="row">
-                <div class="card-sl ">
-                <div class="card-heading1 ">
+                <div class="row">
+                    <div class="card-sl ">
+                        <div class="card-heading1 ">
                            <div class="table-responsive">
                                 <table class="table text-nowrap">
                                     <thead>
@@ -295,11 +299,12 @@ if (isset($_POST['unhold'])) {
                                         $max_qty=$row['QUANTITY'];
                                        
                                         if ($tq>$max_qty) {
+                                            // unset($_SESSION['cart']);
+                                            unset($_SESSION['toast_cart']);
                                             echo '<script>
                                             toastr.success("Not enough quantity available","QUANTITY ALERT",{"iconClass": "customer-info"});
                                             </script>';
                                             
-                                            unset($_SESSION['toast_cart']);
                                         }
                                         elseif($tq<$max_qty){
                                             $_SESSION['cart'][]=array(
@@ -314,7 +319,7 @@ if (isset($_POST['unhold'])) {
                                     }
                                 }
                                     if (isset($_SESSION['cart'])) {
-                                    foreach ($_SESSION['cart'] as $key =>$value) {
+                                    foreach ($_SESSION['cart'] as $key =>$value){
                                         // $p=0;
                                         // $q=0;
                                         $p=$value['pro_name'];
@@ -331,7 +336,7 @@ if (isset($_POST['unhold'])) {
                                                 echo "<input type='hidden' name='pro_name' value='".$value['pro_name']."'>";
                                                 $result2=mysqli_query($con,$select);
                                                 while($row=mysqli_fetch_assoc($result2))
-                                                { 
+                                                {
                                                     if($p==$row['PRODUCT_NAME']){
                                                     echo "<td>".$row['SALE_PRICE']."</td>";
                                                     $price=$row['SALE_PRICE'];
@@ -342,7 +347,6 @@ if (isset($_POST['unhold'])) {
                                                 }
                                                 echo "<td><input type='text' name='qty' value='".$value['qty']."'></td>";
                                                 // $_SESSION['qty']=$q;
-
                                         $bill=$price * $q;
                                         // $_SESSION['bill']=$bill;
                                         echo "<td>".($bill)."</td>";
@@ -364,8 +368,16 @@ if (isset($_POST['unhold'])) {
                                        
                                     }  
                                     
-                                                                  
-                                    
+                                    if($tq<$max_qty){
+                                        $_SESSION['cart_ins'][]=array(
+                                            'id'=>$i,
+                                            'name'=>$p,
+                                            'quantity'=>$q
+                                         );
+                                        } 
+                                        
+                                    }
+
                                 echo "<tr>";
                                 echo "<th><label>Total Bill</label></th>";
                                 echo "<td><input type='text' name='' value='$tb'></td>";
@@ -383,12 +395,8 @@ if (isset($_POST['unhold'])) {
                                 </form>
                                 <?php
                                 echo "</tr>";
-                                $_SESSION['cart_ins'][]=array(
-                                    'id'=>$i,
-                                    'name'=>$p,
-                                    'quantity'=>$q
-                                 ); 
-                            }
+                               
+                            
                             ?>
                             </tbody>
                             </table>

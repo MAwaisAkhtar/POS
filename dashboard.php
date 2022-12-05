@@ -282,10 +282,13 @@ if (isset($_SESSION['c'])) {
                                     <div >
 
                                    <?php 
-                                   include('bar.php'); 
+                                    $sales_run = mysqli_query($con,$sel_sales);
+                                   if (mysqli_num_rows($sales_run)>0) {
+                                   
+                                   include('bar.php');
+                                   } 
                                    ?>
                                     </div>
-                                
                             </ul>
                             <ul class="d-flex justify-content-end "><a href="products.php">See Items</a></ul>
                         </div>

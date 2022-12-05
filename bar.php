@@ -1,15 +1,15 @@
 <?php
 require('db.php');
+// session_start();
 
-$select="SELECT `PRODUCT_NAME`,`QUANTITY` FROM `billing_data`";
+$select="SELECT * FROM `billing_data`";
 $srun=mysqli_query($con,$select);
 while($row=mysqli_fetch_assoc($srun)){
 
-    // $data[]=$row['product'];
+    
     $data1[]=$row;
   
 }
-// print_r(array_unique($data));
 ?>
 <br><br>
 <?php
@@ -31,11 +31,56 @@ foreach($data1 as $key =>$value)
     <?php
     $data2[$p]=$b;
     // $data2[]=$b;
+    $dataa[]=$b;
+    $dataa[]=$p;
 
 
 }
 $result=array_unique($data2);
 
+$arr_size=count($dataa);
+function thirdLargest($dataa,$arr_size) 
+{ 
+
+  
+    // Find first largest element 
+
+    $first = $dataa[0]; 
+
+    for ($i = 1; $i < $arr_size ; $i++) 
+
+        if ($dataa[$i] > $first) 
+
+           $first = $dataa[0]; 
+
+  
+
+    // Find second largest element 
+
+    $second = PHP_INT_MIN; 
+
+    for ($i = 0; $i < $arr_size ; $i++) 
+
+        if ($dataa[$i] > $second &&  
+
+               $dataa[$i] < $first) 
+
+            $second = $dataa[$i]; 
+
+         $result1=array($first,$second);
+    
+    // echo  "First=",$result1[0],"";
+    ?>
+    <br>
+    <?php
+    global $max;
+    $max=$result1[1];
+    // echo  "Second=",$max,"";
+} 
+
+$n = sizeof($dataa); 
+
+thirdLargest($dataa, $n); 
 
 ?>
 <!DOCTYPE html>
@@ -55,24 +100,32 @@ $result=array_unique($data2);
 
 foreach($result as $key=>$value)
 {
+    if($value>=$max)
+    {
     $month[]=$key;
-    $qty[]=$value;
-    
+    $price[]=$value;
+    }
 }
+
+
 
 
 ?>
 <div style="width:500px;">
-  <canvas   id="myChart"></canvas>
+  <canvas id="myChart"></canvas>
 </div>
+ 
+
+
+
 
 <script>
-    const labels = <?php echo json_encode($month) ?>;
+    const labels = <?php echo json_encode($month)?>;
 const data = {
   labels: labels,
   datasets: [{
     label: 'Trending Items',
-    data:  <?php echo json_encode($qty) ?>,
+    data:  <?php echo json_encode($price)?>,
     backgroundColor: [
       'rgba(255, 99, 132, 0.2)',
       'rgba(255, 159, 64, 0.2)',
@@ -112,3 +165,4 @@ const config = {
 </script>
 </body>
 </html>
+

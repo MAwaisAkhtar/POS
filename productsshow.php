@@ -5,6 +5,8 @@ $select="SELECT * FROM `products`";
 $exe=mysqli_query($con,$select);
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +17,6 @@ $exe=mysqli_query($con,$select);
 </head>
 <body>
   
-    <td id="div-1">
     <?php while($array=mysqli_fetch_assoc($exe)){?>
 <div  class="card inner">
       <div class="box">
@@ -30,10 +31,6 @@ $exe=mysqli_query($con,$select);
       <?php
 }
 ?>
-    </td>
-
-
-
 </body>
 </html>
    
