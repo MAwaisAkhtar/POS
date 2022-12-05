@@ -366,18 +366,15 @@ if (isset($_POST['unhold'])) {
                                         echo "</tr>";  
 
                                        
-                                    }  
-                                    
+                                    }
                                     if($tq<$max_qty){
                                         $_SESSION['cart_ins'][]=array(
                                             'id'=>$i,
                                             'name'=>$p,
                                             'quantity'=>$q
                                          );
-                                        } 
-                                        
+                                        }  
                                     }
-
                                 echo "<tr>";
                                 echo "<th><label>Total Bill</label></th>";
                                 echo "<td><input type='text' name='' value='$tb'></td>";
